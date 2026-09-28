@@ -56,5 +56,20 @@ class Objective:
         self.status = ObjectiveStatus.CANCELLED
         self._touch()
 
+    def apply_delta(self, delta: object) -> None:
+        if getattr(delta, "objective_id") != self.id:
+            raise ValueError(
+                "Objective delta belongs to a different objective."
+            )
+
+        new_progress = self.progress + getattr(delta, "progress_change")
+
+        self.progress = max(0.0, min(1.0, new_progress))
+
+        if self.progress >= 1.0:
+            self.complete()
+        else:
+            self._touch()
+
     def _touch(self) -> None:
         self.updated_at = datetime.now()

@@ -1,0 +1,471 @@
+:root {
+    --background: #050505;
+    --surface: #0b0b0b;
+    --surface-light: #111111;
+    --text: #f5f5f5;
+    --muted: #8a8a8a;
+    --border: rgba(255, 255, 255, 0.10);
+    --accent: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        Inter,
+        Helvetica,
+        Arial,
+        sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* NAVIGATION */
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6vw;
+
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(5, 5, 5, 0.78);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    z-index: 100;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.nav nav {
+    display: flex;
+    gap: 32px;
+}
+
+.nav nav a {
+    font-size: 13px;
+    color: #a5a5a5;
+    transition: color 0.2s ease;
+}
+
+.nav nav a:hover {
+    color: white;
+}
+
+
+/* GENERAL */
+
+section {
+    padding: 160px 8vw;
+}
+
+.section-label,
+.hero-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    color: #777;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-top: 180px;
+}
+
+.hero h1 {
+    max-width: 1200px;
+
+    margin-top: 28px;
+
+    font-size: clamp(54px, 8vw, 118px);
+    line-height: 0.95;
+
+    letter-spacing: -0.065em;
+    font-weight: 600;
+}
+
+.hero h1 span {
+    color: #777;
+}
+
+.hero-copy {
+    max-width: 620px;
+
+    margin-top: 42px;
+
+    font-size: 21px;
+    line-height: 1.55;
+
+    color: #9a9a9a;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+
+    margin-top: 42px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 22px;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    background: white;
+    color: black;
+}
+
+.button-primary:hover {
+    background: #ddd;
+}
+
+.button-secondary {
+    border: 1px solid var(--border);
+    color: #ddd;
+}
+
+.button-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+
+/* THESIS */
+
+.thesis {
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-top: 1px solid var(--border);
+}
+
+.thesis h2,
+.runtime h2,
+.architecture h2,
+.open-source h2 {
+    max-width: 1100px;
+
+    margin-top: 28px;
+
+    font-size: clamp(42px, 6vw, 82px);
+    line-height: 1.02;
+
+    letter-spacing: -0.055em;
+    font-weight: 500;
+}
+
+.thesis p,
+.architecture > p,
+.open-source > p {
+    max-width: 680px;
+
+    margin-top: 36px;
+
+    font-size: 19px;
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+
+/* RUNTIME */
+
+.runtime {
+    border-top: 1px solid var(--border);
+}
+
+.runtime-loop {
+    margin-top: 100px;
+
+    display: flex;
+    align-items: stretch;
+
+    overflow-x: auto;
+
+    padding-bottom: 20px;
+}
+
+.node {
+    min-width: 220px;
+
+    padding: 28px;
+
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.node:hover {
+    background: var(--surface-light);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.node.active {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.node span {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 45px;
+}
+
+.node strong {
+    font-size: 15px;
+    letter-spacing: 0.05em;
+}
+
+.node small {
+    margin-top: 12px;
+
+    color: #777;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.connector {
+    width: 48px;
+    height: 1px;
+
+    background: var(--border);
+
+    align-self: center;
+
+    flex-shrink: 0;
+}
+
+.loop-caption {
+    margin-top: 32px;
+
+    font-size: 11px;
+    letter-spacing: 0.18em;
+
+    color: #555;
+}
+
+
+/* ARCHITECTURE */
+
+.architecture {
+    border-top: 1px solid var(--border);
+}
+
+.architecture-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1px;
+
+    margin-top: 100px;
+
+    background: var(--border);
+
+    border: 1px solid var(--border);
+}
+
+.architecture-card {
+    min-height: 300px;
+
+    padding: 42px;
+
+    background: var(--background);
+}
+
+.architecture-card span {
+    font-size: 11px;
+    color: #555;
+}
+
+.architecture-card h3 {
+    margin-top: 80px;
+
+    font-size: 24px;
+    font-weight: 500;
+
+    letter-spacing: -0.03em;
+}
+
+.architecture-card p {
+    max-width: 440px;
+
+    margin-top: 14px;
+
+    color: #777;
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* OPEN SOURCE */
+
+.open-source {
+    min-height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-top: 1px solid var(--border);
+}
+
+.open-source .button {
+    align-self: flex-start;
+
+    margin-top: 44px;
+}
+
+
+/* FOOTER */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 48px 8vw;
+
+    border-top: 1px solid var(--border);
+
+    color: #555;
+}
+
+.footer-brand {
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.footer-right {
+    font-size: 12px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .nav {
+        padding: 0 5vw;
+    }
+
+    .nav nav {
+        display: none;
+    }
+
+    section {
+        padding: 110px 6vw;
+    }
+
+    .hero {
+        padding-top: 140px;
+    }
+
+    .hero h1 {
+        font-size: clamp(48px, 14vw, 80px);
+    }
+
+    .hero-copy {
+        font-size: 18px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .architecture-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .architecture-card {
+        min-height: 250px;
+    }
+
+    .architecture-card h3 {
+        margin-top: 55px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
