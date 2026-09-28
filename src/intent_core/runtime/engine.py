@@ -1,11 +1,29 @@
 from __future__ import annotations
 
 from intent_core.core.objective import Objective, ObjectiveStatus
+from intent_core.core.world import WorldState
 from intent_core.runtime.decision import Decision, DecisionAction
 
 
 class IntentRuntime:
-    def evaluate(self, objective: Objective) -> Decision:
+    def evaluate(
+        self,
+        objective: Objective,
+        world: WorldState,
+    ) -> Decision:
+
+        desired_state_facts = world.get(
+            subject=objective.purpose,
+            property="status",
+        )
+
+        for fact in desired_state_facts:
+            if fact.value == objective.desired_state:
+                return Decision(
+                    action=DecisionAction.STOP,
+                    reason="World state indicates that the objective's desired state has been reached.",
+                )
+
         if objective.status == ObjectiveStatus.CREATED:
             return Decision(
                 action=DecisionAction.COMPUTE,
